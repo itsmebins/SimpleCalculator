@@ -1,2 +1,2 @@
 # SimpleCalculator
-React Native calculator application with REDUX. 
+React Native calculator app using Redux as state management
