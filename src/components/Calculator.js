@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import { ButtonCalculator } from './ButtonCalculator.js';
-import { userInputUpdate } from '../Actions/CalculatorActions.js';
 
   class calculator extends Component {
-
-
-    componentWillMount() {
-      console.log('here will mount..');
-      console.log(this.props);
-    }
+    state = { expressionStr: '' };
 
     onPressButton(value) {
-      console.log(value);
-      const previousValue = this.props.expressionStr;
+      console.log(this.state);
+      const previousValue = this.state.expressionStr;
       //const this.props.
       let currrentExpression = previousValue.toString() + value.toString();
       if (value === 'E') {
@@ -24,9 +17,8 @@ import { userInputUpdate } from '../Actions/CalculatorActions.js';
       } else if (value === 'R') {
         const currentValue = previousValue.toString();
         currrentExpression = currentValue.substring(0, ((currentValue.length - 1)));
-      }
-      console.log(currrentExpression);
-      this.props.userInputUpdate(currrentExpression);
+      } 
+      this.setState({ expressionStr: currrentExpression });
     }
 
 
@@ -34,7 +26,7 @@ import { userInputUpdate } from '../Actions/CalculatorActions.js';
       return (
         <View style={{ flex: 1 }}>
           <View style={styles.resultSection}>
-            <Text style={styles.textStyle}> { this.props.expressionStr } </Text>
+            <Text style={styles.textStyle}> { this.state.expressionStr } </Text>
           </View>
           <View style={{ flex: 8, backgroundColor: '#1B273D', flexDirection: 'column' }}>
             <View style={styles.rowContainer}>
@@ -110,12 +102,5 @@ import { userInputUpdate } from '../Actions/CalculatorActions.js';
       }
     };
 
-    const mapStateToProps = (state) => {
-      console.log('state');
-      console.log(state);
-    //  const { expressionStr } = state.expressionStr;
-    //  return { expressionStr };
-    return state;
-    };
 
-    export default connect(mapStateToProps, { userInputUpdate })(calculator);
+    export default calculator;
