@@ -6,7 +6,6 @@ import { ButtonCalculator } from './ButtonCalculator.js';
     state = { expressionStr: '' };
 
     onPressButton(value) {
-      console.log(this.state);
       const previousValue = this.state.expressionStr;
       //const this.props.
       let currrentExpression = previousValue.toString() + value.toString();
@@ -17,7 +16,7 @@ import { ButtonCalculator } from './ButtonCalculator.js';
       } else if (value === 'R') {
         const currentValue = previousValue.toString();
         currrentExpression = currentValue.substring(0, ((currentValue.length - 1)));
-      } 
+      }
       this.setState({ expressionStr: currrentExpression });
     }
 
