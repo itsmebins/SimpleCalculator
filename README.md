@@ -1,2 +1,3 @@
 # SimpleCalculator
-React Native calculator app using Redux as state management
+Master Branch : React Native calculator app with out any state management.
+WithRedux Branch : Same applicatcation using Redux.
